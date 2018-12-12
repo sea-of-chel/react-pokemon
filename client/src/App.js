@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import Search from './components/Search'
 import './App.scss'
 
 function searchingFor(term){
@@ -13,13 +12,15 @@ class App extends Component {
     super(props);
     this.state = {
       users: [],
-      term: ''
+      term: '',
+      isHidden: true
     }
   }
 
   searchHandler = (event) => {
     this.setState({
-      term: event.target.value
+      term: event.target.value,
+      isHidden: !event.target.value,
     });
   }
 
@@ -30,25 +31,33 @@ class App extends Component {
       .then(users => this.setState({ users }))
   }
   render() {
-    const {term, users} = this.state
+    const {term, users, isHidden} = this.state
     return (
-      <div className="App">
-        <div className="wrapper">
+    <div className="App">
+      <div className="wrapper">
         <form className="form-header">
-          <h1>Pokedex Search</h1>
-          <input className="input-style" type="text" onChange={this.searchHandler} value={term}/>
+          <h1 className="search-headline">Pokedex Search</h1>
+          <label className="search-label">Search for Pokemon by breed or type</label>
+          <input 
+            placeholder="i.e. Pikachu or water" 
+            className="input-style" 
+            type="text" 
+            onChange={this.searchHandler} 
+            value={term}
+          />
         </form> 
-        {/* <Search triggerSearch={this.searchHandler}/> */}
-        <div className="pokemon-display">{users.filter(searchingFor(term)).map(user =>
-
-          <div className="pokemon-card" key={user.name}>
-            <h1 className="pokemon-name">{user.name}</h1>
-            <p className="pokemon-type">{user.types[0]} {user.types[1]}</p>
-          </div>
-           
-           )}</div>
+        {!isHidden &&
+        <div className="pokemon-display">
+          {users.filter(searchingFor(term)).map(user =>
+            <div className="pokemon-card" key={user.name}>
+              <h1 className="pokemon-name">{user.name}</h1>
+              <p className="pokemon-type">{user.types[0]} {user.types[1]}</p>
+            </div>
+          )}
         </div>
+        }
       </div>
+    </div>
     );
   }
 }
