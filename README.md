@@ -23,7 +23,7 @@ Install `node_modules`
 $ npm install
 ```
 
-In the root folder run 
+In the root directory run 
 
 ```
 $ PORT=3001 node bin/www
