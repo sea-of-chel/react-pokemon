@@ -20,7 +20,7 @@ $ npm cd client
 Install `node_modules`
 
 ```
-$ npm npm install
+$ npm install
 ```
 
 In the root folder run 
