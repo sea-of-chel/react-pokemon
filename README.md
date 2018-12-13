@@ -7,23 +7,34 @@ Make sure you have Node.js and NPM installed before setting up this project.
 
 In the root director install `node_modules`
 
-### `npm install`
+```
+$ npm install
+```
 
 in a new tab navigate to the `client` director
 
-### `cd client`
+```
+$ npm cd client
+```
 
 Install `node_modules`
 
-### `npm install`
+```
+$ npm npm install
+```
 
 In the root folder run 
 
-### `PORT=3001 node bin/www`
+```
+$ PORT=3001 node bin/www
+```
 
 In the `client` directory run 
 
-### `npm start`
+```
+$ npm start
+```
+
 
 `http://localhost:3000/` will open in the browser.
 
